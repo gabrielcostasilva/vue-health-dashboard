@@ -27,9 +27,7 @@
               </v-col>
 
               <v-col cols="12" sm="12">
-                <v-card
-                  class="mx-12 rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl mt-n15"
-                >
+                <v-card class="mx-12 rounded-xl mt-n15">
                   <v-list-item three-line>
                     <v-list-item-content class="pa-10">
                       <v-list-item-title class="headline mb-1">
@@ -50,16 +48,21 @@
                 </v-card>
               </v-col>
               <v-col cols="12" sm="12">
-                <v-card
-                  class="mx-12 rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl mt-n10"
-                >
+                <v-card class="mx-12 rounded-xl mt-n10">
                   <v-app-bar color="rgba(0, 0, 0, 0)" flat class="ma-8">
                     <h5>Statistics of your health</h5>
                     <v-spacer></v-spacer>
-                    <v-btn color="teal" text>
-                      2019
-                      <v-icon right>mdi-chevron-down</v-icon>
-                    </v-btn>
+                    <v-col cols="6">
+                      <v-autocomplete
+                        multiple
+                        auto-select-first
+                        chips
+                        deletable-chips
+                        small-chips
+                        :items="years"
+                        v-model="selectedYears"
+                      ></v-autocomplete>
+                    </v-col>
                     <v-btn color="teal" rounded dark depressed>Year</v-btn>
                     <v-btn text>Month</v-btn>
                   </v-app-bar>
@@ -81,11 +84,7 @@
                 </v-card>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card
-                  class="mx-12 rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl mt-n4"
-                  color="teal"
-                  dark
-                >
+                <v-card class="mx-12 rounded-xl mt-n4" color="teal" dark>
                   <v-list-item three-line>
                     <v-list-item-content class="pa-2">
                       <v-list-item-title class="headline mb-1">
@@ -100,9 +99,7 @@
                 </v-card>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card
-                  class="mx-12 rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl mt-n12"
-                >
+                <v-card class="mx-12 rounded-xl mt-n12">
                   <v-app-bar color="rgba(0, 0, 0, 0)" flat class="ma-8">
                     <h5>Your activity</h5>
                     <v-spacer></v-spacer>
@@ -134,21 +131,20 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="12">
-                <v-list two-line>
-                  <v-list-item>
-                    <v-list-item-avatar>
-                      <img src="https://cdn.vuetifyjs.com/images/lists/3.jpg" />
-                    </v-list-item-avatar>
-                    <v-list-item-content>
-                      <v-list-item-title>Anastasia Turner</v-list-item-title>
-                      <v-list-item-subtitle class="teal--text"
-                        >35 years, Houston</v-list-item-subtitle
-                      >
-                    </v-list-item-content>
-                    <v-space></v-space>
-                    <v-icon color="teal">mdi-menu</v-icon>
-                  </v-list-item>
-                </v-list>
+                <v-toolbar flat>
+                  <v-avatar>
+                    <img src="https://cdn.vuetifyjs.com/images/lists/3.jpg" />
+                  </v-avatar>
+
+                  <v-toolbar-title class="ml-5">
+                    <h1 class="subtitle-1">Anastasia Turner</h1>
+                    <h1 class="subtitle-2 teal--text">35 years, Houston</h1>
+                  </v-toolbar-title>
+
+                  <v-spacer></v-spacer>
+
+                  <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                </v-toolbar>
               </v-col>
               <v-col
                 cols="12"
@@ -156,36 +152,23 @@
                 v-for="item in personalData"
                 :key="item.value"
               >
-                <v-row>
-                  <v-col cols="12" md="2">
-                    <v-card
-                      height="50px"
-                      width="100px"
-                      :color="item.color"
-                    ></v-card>
-                  </v-col>
-                  <v-col cols="12" md="10">
-                    <v-list two-line subheader class="ml-n8">
-                      <v-list-item>
-                        <v-list-item-content>
-                          <v-list-item-subtitle>{{
-                            item.metric
-                          }}</v-list-item-subtitle>
-                          <v-list-item-title>{{
-                            item.value
-                          }}</v-list-item-title>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-list>
-                  </v-col>
-                </v-row>
+                <v-alert :color="item.color" border="left" colored-border>
+                  <h1 class="subtitle-1 grey--text">{{ item.metric }}</h1>
+                  <h1 class="subtitle-1">{{ item.value }}</h1>
+                </v-alert>
               </v-col>
-              <v-col cols="12" sm="12">
-                <v-btn text
-                  >November
-                  <v-icon right>mdi-chevron-down</v-icon>
-                </v-btn>
+
+              <v-col cols="4">
+                <v-autocomplete
+                  auto-select-first
+                  chips
+                  small-chips
+                  deletable-chips
+                  :items="months"
+                  v-model="selectedMonth"
+                ></v-autocomplete>
               </v-col>
+
               <v-col cols="12" sm="12">
                 <v-list>
                   <v-list-item>
@@ -211,7 +194,7 @@
                 :key="apointment.staff"
               >
                 <v-card
-                  class="mx-12 rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl mt-n4 py-4"
+                  class="mx-12 rounded-xl mt-n4 py-4"
                   :color="apointment.color"
                   :dark="apointment.dark"
                   flat
@@ -238,7 +221,7 @@
               </v-col>
               <v-col cols="12" sm="12">
                 <v-card
-                  class="mx-12 rounded-tl-xl rounded-tr-xl rounded-bl-xl rounded-br-xl mt-n4"
+                  class="mx-12 rounded-xl mt-n4"
                   color="teal lighten-5"
                   flat
                 >
@@ -352,7 +335,24 @@ export default {
           color: 'teal lighten-5',
           dark: false
         }
-      ]
+      ],
+      years: ['2019', '2020', '2021'],
+      selectedYears: ['2019'],
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ],
+      selectedMonth: 'November'
     }
   },
   computed: {

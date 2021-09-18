@@ -26,11 +26,19 @@
           <v-badge v-if="menuItem.highlight" color="pink" dot overlap>
             <v-list-item-content>
               <v-icon class="mb-2">{{ menuItem.icon }}</v-icon>
+              <v-list-item-subtitle align="center">{{
+                menuItem.description
+              }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-badge>
-          <v-list-item-content v-else>
-            <v-icon class="mb-2">{{ menuItem.icon }}</v-icon>
-          </v-list-item-content>
+          <div v-else>
+            <v-list-item-content>
+              <v-icon class="mb-2">{{ menuItem.icon }}</v-icon>
+              <v-list-item-subtitle align="center">{{
+                menuItem.description
+              }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </div>
         </v-list-item>
       </v-list>
       <v-list style="position: absolute; bottom: 0" class="ml-3" flat>
@@ -53,27 +61,32 @@ export default {
         {
           highlight: false,
           to: '/',
-          icon: 'fas fa-home'
+          icon: 'fas fa-home',
+          description: 'Home'
         },
         {
           highlight: true,
           to: '/',
-          icon: 'fas fa-user'
+          icon: 'fas fa-user',
+          description: 'User'
         },
         {
           highlight: false,
           to: '/',
-          icon: 'fas fa-envelope'
+          icon: 'fas fa-envelope',
+          description: 'E-mail'
         },
         {
           highlight: false,
           to: '/',
-          icon: 'fas fa-cog'
+          icon: 'fas fa-cog',
+          description: 'Config'
         },
         {
           highlight: false,
           to: '/',
-          icon: 'fas fa-question-circle'
+          icon: 'fas fa-question-circle',
+          description: 'FAQ'
         }
       ]
     }
