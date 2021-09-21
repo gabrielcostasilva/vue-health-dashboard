@@ -16,29 +16,19 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-      <v-list flat>
+      <v-list >
         <v-list-item
           v-for="menuItem in menuItems"
           :key="menuItem.icon"
           router
           :to="menuItem.to"
         >
-          <v-badge v-if="menuItem.highlight" color="pink" dot overlap>
             <v-list-item-content>
-              <v-icon class="mb-2">{{ menuItem.icon }}</v-icon>
+              <v-icon class="mb-2" >{{ menuItem.icon }}</v-icon>
               <v-list-item-subtitle align="center">{{
                 menuItem.description
               }}</v-list-item-subtitle>
             </v-list-item-content>
-          </v-badge>
-          <div v-else>
-            <v-list-item-content>
-              <v-icon class="mb-2">{{ menuItem.icon }}</v-icon>
-              <v-list-item-subtitle align="center">{{
-                menuItem.description
-              }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </div>
         </v-list-item>
       </v-list>
       <v-list style="position: absolute; bottom: 0" class="ml-3" flat>
@@ -66,25 +56,25 @@ export default {
         },
         {
           highlight: true,
-          to: '/',
+          to: '/user',
           icon: 'fas fa-user',
           description: 'User'
         },
         {
           highlight: false,
-          to: '/',
+          to: '/email',
           icon: 'fas fa-envelope',
           description: 'E-mail'
         },
         {
           highlight: false,
-          to: '/',
+          to: '/config',
           icon: 'fas fa-cog',
           description: 'Config'
         },
         {
           highlight: false,
-          to: '/',
+          to: '/faq',
           icon: 'fas fa-question-circle',
           description: 'FAQ'
         }

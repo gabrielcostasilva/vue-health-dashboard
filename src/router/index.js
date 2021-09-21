@@ -8,8 +8,28 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
-  }
+    component: () => import('../views/Home.vue')
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import('../views/User.vue')
+  },
+  {
+    path: '/email',
+    name: 'Email',
+    component: () => import('../views/EMail.vue')
+  },
+  {
+    path: '/config',
+    name: 'Config',
+    component: () => import('../views/Config.vue')
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: () => import('../views/FAQ.vue')
+  },
 ]
 
 const router = new VueRouter({

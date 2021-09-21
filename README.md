@@ -13,14 +13,7 @@ The main page consists of three parts: a side bar, the main dashboard, and the u
 
 ## Branch Features
 
-This branch replaces a few Vuetify components with more appropriate ones.
-
-- __Rounded cards__ now use only one instrution to round all four corners;
-- __Simulated dropdowns__ now use the __autocomplete__ component;
-- __User identification__ on the top of the left-hand side now uses a toolbar instead of a __list__ structure;
-- __User metrics__ now use an __alert__ component instead of an elaborated structure with cards;
-
-In addition, we added descriptions to sidebar icons.
+This branch breaks down the original structure into individual components. In addition, we created routes for sidebar options. Checkout commits to see the changes.
 
 ## Project setup
 ```
